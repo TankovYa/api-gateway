@@ -1,0 +1,26 @@
+server:
+  port: 8000
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    compatibility-verifier:
+      enabled: false
+    config:
+      enabled: false
+      import-check:
+        enabled: false
+    gateway:
+      routes:
+        - id: products-service
+          uri: http://localhost:5001
+          predicates:
+            - Path=/products/**
+        - id: orders-service
+          uri: http://localhost:5002
+          predicates:
+            - Path=/orders/**
+        - id: customers-service
+          uri: http://localhost:5003
+          predicates:
+            - Path=/customers/**
