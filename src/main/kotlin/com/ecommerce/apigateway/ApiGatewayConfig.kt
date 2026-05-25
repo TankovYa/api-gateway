@@ -13,15 +13,15 @@ class ApiGatewayConfig {
         return builder.routes()
             .route("products") {r ->
                 r.path("/products/**")
-                .uri("http://localhost:5001")
+                .uri("http://products-service:5001")
             }
             .route("orders"){r->
                 r.path("/orders/**")
-                    .uri("http://localhost:5002")
+                    .uri("http://orders-service:5002")
             }
             .route("customers"){r->
                 r.path("/customers/**")
-                    .uri("http://localhost:5003")
+                    .uri("http://customers-service:5003")
             }
             .build()
     }
